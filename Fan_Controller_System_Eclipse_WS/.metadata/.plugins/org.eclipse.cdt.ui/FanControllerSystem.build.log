@@ -1,0 +1,42 @@
+13:42:04 **** Incremental Build of configuration Release for project FanControllerSystem ****
+make all 
+Building file: ../dc_motor.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"dc_motor.d" -MT"dc_motor.o" -c -o "dc_motor.o" "../dc_motor.c"
+Finished building: ../dc_motor.c
+ 
+Building target: FanControllerSystem.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,FanControllerSystem.map -mmcu=atmega32 -o "FanControllerSystem.elf"  ./adc.o ./dc_motor.o ./gpio.o ./lcd.o ./lm35_sensor.o ./main.o ./pwm_timer0.o   
+Finished building target: FanControllerSystem.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S FanControllerSystem.elf  >"FanControllerSystem.lss"
+Finished building: FanControllerSystem.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex FanControllerSystem.elf  "FanControllerSystem.hex"
+Finished building: FanControllerSystem.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex FanControllerSystem.elf  "FanControllerSystem.eep"
+Finished building: FanControllerSystem.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 FanControllerSystem.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6346 bytes (19.4% Full)
+(.text + .data + .bootloader)
+
+Data:        298 bytes (14.6% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+13:42:05 Build Finished. 0 errors, 0 warnings. (took 971ms)
+

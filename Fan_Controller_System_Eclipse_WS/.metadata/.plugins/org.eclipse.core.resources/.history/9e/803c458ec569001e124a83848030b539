@@ -1,0 +1,59 @@
+/*
+ ================================================================================================================================
+ * File Name   : adc.c
+ *
+ * Module Name : adc
+ *
+ * Created On  : Oct 13, 2023
+ *
+ * Author Name : Ahmed Abd Elgleel
+ ================================================================================================================================
+ */
+#include "adc_interface.h"
+#include "gpio_interface.h"
+#include "adc_private.h"
+
+#if USE_ADC_IN_INTERRUPT_MODE
+/*******************************************************************************
+ *                          Global Variables                                   *
+ *******************************************************************************/
+volatile uint16 g_adcResult = 0;
+#endif
+
+/*******************************************************************************
+ *                              Functions Definition                           *
+ *******************************************************************************/
+
+/* Description :
+ * initiate the ADC module
+ */
+void ADC_init(const ADC_config* conf)
+{
+	/* Set reference voltage , ADC Left Adjust Result , channel is 0 at default*/
+	ADC_ADMUX_REG.Byte|=(conf->bits)|(conf->volt);
+
+	/* Enable ADC & set our prescaler N */
+	ADC_ADCSRA_REG.Byte|=conf->pre;
+	ADC_ADCSRA_REG.Bits.ADEN_BIT=1;
+}
+
+/* Description :
+ * read the value at the channel ( The produced value of conversation )
+ */
+uint16 ADC_readChannel(ch_no channel)
+{
+	/*set our channel number*/
+	ADMUX|=channel;
+
+	/*start conversation from Analog to digital*/
+	ADCSRA|=(1<<ADSC);
+
+	/*wait till we recieve the result of conversation*/
+	while(BIT_IS_CLEAR(ADCSRA,ADIF));
+
+	/*Clear the flag*/
+	SET_BIT(ADCSRA,ADIF);
+
+	/* return the read value at ADC register*/
+	return ADC;
+}

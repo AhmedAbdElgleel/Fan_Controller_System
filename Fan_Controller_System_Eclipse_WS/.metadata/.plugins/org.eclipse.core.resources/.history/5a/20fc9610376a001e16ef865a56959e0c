@@ -1,0 +1,95 @@
+/*
+ ================================================================================================================================
+ * File Name   : main.c
+ *
+ * Description : System control fan speed based on the room temperature
+ *
+ * Created On  : Oct 13, 2023
+ *
+ * Author Name : Ahmed Abd Elgleel
+ ================================================================================================================================
+ */
+#include "adc_interface.h"
+#include "lcd.h"
+#include "lm35_sensor.h"
+#include "dc_motor.h"
+#include "Internal_mapping_register_private.h"	/* To use the SREG Register */
+
+int main(void)
+{
+	uint8 temp;
+	ADC_ConfigType ADC_Configurations = {INTERNAL_VOLT,F_CPU_8};
+	/* Enable interrupts by setting I-bit */
+	SREG_REG.Bits.I_Bit=1;
+
+	/* Initialize ADC driver */
+	ADC_init(&ADC_Configurations);
+
+	/* Initialize Motor driver */
+	DcMotor_Init();
+
+	/* Initialize LCD driver */
+	LCD_init();
+
+	/* Display this string "Temp =   C" only one time on LCD at the second row*/
+	LCD_moveCursor(1,4);
+	LCD_displayString("Temp =    C");
+
+    while(1)
+    {
+    	/* Get the temperature value */
+    	temp = LM35_getTemperature();
+
+		/* Control the duty cycle of the output PWM signal (Fan Speed) based on the temperature value */
+		if(temp >= 120)
+		{
+			/* Rotates the motor with 100% from its speed */
+			DCMOTOR_rotateWithControl(ROTATE_CLOCKWISE, 100, FIRST_DC_MOTOR);
+		}
+		else if(temp >= 90)
+		{
+			DCMOTOR_rotateWithControl(ROTATE_CLOCKWISE, 75, FIRST_DC_MOTOR);
+			DcMotor_Rotate(DC_MOTOR_CW,75); /* Rotates the motor with 75% from its speed */
+		}
+		else if(temp >= 60)
+		{
+			DCMOTOR_rotateWithControl(ROTATE_CLOCKWISE, 50, FIRST_DC_MOTOR);
+			DcMotor_Rotate(DC_MOTOR_CW,50); /* Rotates the motor with 50% from its speed */
+		}
+		else if(temp >= 30)
+		{
+			Fan1 = FAN_ON;
+			DcMotor_Rotate(DC_MOTOR_CW,25); /* Rotates the motor with 25% from its speed */
+		}
+		else
+		{
+			Fan1 = FAN_OFF;
+			DcMotor_Rotate(DC_MOTOR_STOP,0); /* Stop the motor */
+		}
+
+		/* Display the temperature and FAN state */
+		if(Fan1 == FAN_OFF)
+		{
+			LCD_moveCursor(0,4);
+			LCD_displayString("FAN is OFF");
+		}
+		else
+		{
+			LCD_moveCursor(0,4);
+			LCD_displayString("FAN is ON ");
+		}
+
+		/* Display the temperature value every time at same position */
+		LCD_moveCursor(1,11);
+		if(temp >= 100)
+		{
+			LCD_intgerToString(temp);
+		}
+		else
+		{
+			LCD_intgerToString(temp);
+			/* In case the digital value is two or one digits print space in the next digit place */
+			LCD_displayCharacter(' ');
+		}
+    }
+}

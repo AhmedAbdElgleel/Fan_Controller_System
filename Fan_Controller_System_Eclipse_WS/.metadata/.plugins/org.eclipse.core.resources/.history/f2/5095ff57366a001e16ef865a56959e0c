@@ -1,0 +1,43 @@
+/*
+ ================================================================================================================================
+ * File Name   : main.c
+ *
+ * Description : System control fan speed based on the room temperature
+ *
+ * Created On  : Oct 13, 2023
+ *
+ * Author Name : Ahmed Abd Elgleel
+ ================================================================================================================================
+ */
+#include "adc_interface.h"
+#include "lcd.h"
+#include "lm35_sensor.h"
+#include "dc_motor.h"
+#include "Internal_mapping_register_private.h"	/* To use the SREG Register */
+
+int main(void)
+{
+	uint8 temp;
+	ADC_ConfigType ADC_Configurations = {INTERNAL_VOLT,F_CPU_8};
+	/* Enable interrupts by setting I-bit */
+	SREG_REG.Bits.I_Bit=1;
+
+	/* Initialize ADC driver */
+	ADC_init(&ADC_Configurations);
+
+	/* Initialize Motor driver */
+	DcMotor_Init();
+
+	/* Initialize LCD driver */
+	LCD_init();
+
+
+	/* Display this string "Temp =   C" only once on LCD at the second row*/
+		LCD_moveCursor(1,4);
+		LCD_displayString("Temp =    C");
+
+	while(1)
+	{
+
+	}
+}

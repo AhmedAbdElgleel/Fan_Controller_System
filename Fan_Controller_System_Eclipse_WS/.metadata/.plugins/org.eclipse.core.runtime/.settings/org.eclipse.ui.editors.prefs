@@ -1,0 +1,8 @@
+AbstractTextEditor.Color.Background=28,31,34
+AbstractTextEditor.Color.Background.SystemDefault=false
+AbstractTextEditor.Color.FindScope=255,255,255
+AbstractTextEditor.Color.SelectionBackground.SystemDefault=false
+AbstractTextEditor.Color.SelectionForeground.SystemDefault=false
+currentIPColor=32,32,48
+eclipse.preferences.version=1
+printMarginColor=43,145,175

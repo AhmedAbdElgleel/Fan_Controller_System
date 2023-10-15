@@ -1,0 +1,17 @@
+/*
+ ================================================================================================================================
+ * File Name   : pwm_timer0_private.h
+ *
+ * Module Name : pwm_timer0_private
+ *
+ * Created On  : Oct 14, 2023
+ *
+ * Author Name : Ahmed Abd Elgleel
+ ================================================================================================================================
+ */
+#ifndef PWM_TIMER0_PRIVATE_H_
+#define PWM_TIMER0_PRIVATE_H_
+
+
+
+#endif /* PWM_TIMER0_PRIVATE_H_ */

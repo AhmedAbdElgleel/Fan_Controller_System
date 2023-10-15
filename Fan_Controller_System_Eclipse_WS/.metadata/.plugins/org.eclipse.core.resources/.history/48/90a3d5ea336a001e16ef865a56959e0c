@@ -1,0 +1,21 @@
+/*
+ ================================================================================================================================
+ * File Name   : main.c
+ *
+ * Description : System control fan speed based on the room temperature
+ *
+ * Created On  : Oct 13, 2023
+ *
+ * Author Name : Ahmed Abd Elgleel
+ ================================================================================================================================
+ */
+#include "adc_interface.h"
+#include "lcd.h"
+#include "lm35_sensor.h"
+int main(void)
+{
+	while(1)
+	{
+
+	}
+}

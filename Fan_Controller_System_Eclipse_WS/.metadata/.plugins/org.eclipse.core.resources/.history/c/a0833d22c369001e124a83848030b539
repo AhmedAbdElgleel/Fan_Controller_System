@@ -1,0 +1,17 @@
+/*
+ ================================================================================================================================
+ * File Name   : adc_private.h
+ *
+ * Module Name : adc_private
+ *
+ * Created On  : Oct 13, 2023
+ *
+ * Author Name : Ahmed Abd Elgleel
+ ================================================================================================================================
+ */
+#ifndef ADC_PRIVATE_H_
+#define ADC_PRIVATE_H_
+#define USE_ADC_INTERRUPT_MODE
+
+
+#endif /* ADC_PRIVATE_H_ */
