@@ -1,5 +1,3 @@
-Certainly, here's the updated README with the addition that the project was developed using Eclipse:
-
 # Temperature-Controlled Fan System
 
 ## Overview
