@@ -21,13 +21,13 @@ This project aims to design a temperature-controlled fan system using the ATmega
 ## Development Environment
 - **IDE**: Developed using Eclipse.
 - **Microcontroller**: ATmega32.
-- **Programming Language**: C/C++.
+- **Programming Language**: C.
 
 ## ADC Driver Requirements
 1. **ADC Driver**: Implement a full ADC driver with a polling design.
 2. **Configuration Structure**: Modify the `ADC_init` function to accept a configuration structure, `ADC_ConfigType`.
 3. **Configuration Structure**: Define the `ADC_ConfigType` structure with fields for reference voltage and prescaler settings.
-4. **ADC Configuration**: Configure the ADC to use an internal reference voltage of 2.56V and a prescaler of `F_CPU/8`.
+4. **ADC Configuration**: Configure the ADC to use an internal reference voltage of 2.56V and a prescaler of `F_CPU/128`.
 
 ## GPIO Driver Requirements
 1. **GPIO Driver**: Utilize the GPIO driver implemented in the course for general-purpose input/output operations.
@@ -51,3 +51,5 @@ This project aims to design a temperature-controlled fan system using the ATmega
 
 ## Acknowledgments
 - The inspiration for this project came from [this video tutorial](https://youtu.be/RFQGjcikfK4).
+## RealTime Hardware video
+-you will found a realtime hardware video in folder 
