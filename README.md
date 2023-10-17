@@ -4,7 +4,7 @@
 This project aims to design a temperature-controlled fan system using the ATmega32 microcontroller. The system monitors temperature using the LM35 temperature sensor, converts analog readings to digital values using the ADC, and controls a fan's speed based on predefined temperature thresholds. The project follows a layered architecture, with separate drivers for various components.
 
 ## System Requirements
-1. **Microcontroller**: Utilize the ATmega32 microcontroller with a 1MHz clock frequency.
+1. **Microcontroller**: Utilize the ATmega32 microcontroller with a 16MHz clock frequency.
 2. **Temperature Sensor**: Incorporate the LM35 to provide continuous analog temperature output.
 3. **Analog-to-Digital Conversion (ADC)**: Convert the analog temperature output to digital values for processing.
 4. **Temperature Calculations**: Implement temperature calculations within the microcontroller.
