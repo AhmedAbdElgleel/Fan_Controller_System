@@ -52,4 +52,4 @@ This project aims to design a temperature-controlled fan system using the ATmega
 ## Acknowledgments
 - The inspiration for this project came from [this video tutorial](https://youtu.be/RFQGjcikfK4).
 ## RealTime Hardware video
--you will found a realtime hardware video in folder 
+-you will found a realtime hardware video in folder Realtime_Hardware
