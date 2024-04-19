@@ -2,7 +2,7 @@
 
 ![Fan Controller System](https://drive.google.com/uc?id=1CMguAcIYwYhyzQvd5jVY6te83uz-7_k2)
 
-![Fan Controller System Running](https://drive.google.com/file/d/1WR-cv9JQTgmutqlIVqX8LgUKLo5PoyR1/view)
+![Fan Controller Running](https://drive.google.com/uc?id=1WR-cv9JQTgmutqlIVqX8LgUKLo5PoyR1)
 
 [Video Link](https://www.linkedin.com/posts/ahmed-abd-elgleel-95a675252_embeddedsystems-innovation-engineeringexcellence-activity-7119229549002784768-aFJi?utm_source=share&utm_medium=member_desktop)
 
